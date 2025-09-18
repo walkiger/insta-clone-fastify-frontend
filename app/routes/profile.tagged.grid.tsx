@@ -5,15 +5,15 @@ import { PostCard } from "~/components/PostCard";
 
 export async function loader() {
   try {
-    const response = await api.get("/posts/grid");
-    return postsSchema.parse(response.data);
+    const { data } = await api.get("/tagged/grid");
+    return postsSchema.parse(data);
   } catch (error) {
-    console.error("Failed to load posts:", error);
-    throw new Response("Could not load posts.", { status: 500 });
+    console.error("Failed to load tagged posts:", error);
+    throw new Response("Could not load tagged posts.", { status: 500 });
   }
 }
 
-export default function PostsGrid() {
+export default function TaggedGrid() {
   const posts = useLoaderData() as Post[];
   return (
     <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
@@ -23,3 +23,5 @@ export default function PostsGrid() {
     </div>
   );
 }
+
+
