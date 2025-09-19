@@ -1,4 +1,5 @@
 import type { TaggedPost } from "~/schemas/tagged.schema";
+import { api } from "~/services/api";
 
 export function TaggedGridItem({ post }: { post: TaggedPost }) {
   return (
@@ -7,7 +8,7 @@ export function TaggedGridItem({ post }: { post: TaggedPost }) {
         <p className='font-bold'>webeet_user</p>
       </div>
       <img
-        src={post.img_url}
+        src={post.img_url.startsWith("http") ? post.img_url : `${api.defaults.baseURL}${post.img_url}`}
         alt={post.caption || "Tagged post"}
         className='w-full h-auto aspect-square object-cover'
       />
