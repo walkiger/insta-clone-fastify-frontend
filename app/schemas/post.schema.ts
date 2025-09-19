@@ -5,7 +5,7 @@ const postSchema = z.object({
   id: z.number(),
   img_url: z.string().url(),
   caption: z.string().nullable(),
-  created_at: z.string(),
+  created_at: z.string().optional(),
 });
 
 const postsSchema = z.array(postSchema);

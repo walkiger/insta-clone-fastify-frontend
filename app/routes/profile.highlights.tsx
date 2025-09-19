@@ -1,17 +1,12 @@
 import { useLoaderData } from "react-router";
 import { api } from "~/services/api";
+import { highlightsSchema, type Highlight } from "~/schemas/highlights.schema";
 import { HighlightBubble } from "~/components/HighlightBubble";
-
-type Highlight = {
-  id: number;
-  title: string;
-  cover_url: string;
-};
 
 export async function loader() {
   try {
     const { data } = await api.get("/highlights");
-    return data as Highlight[];
+    return highlightsSchema.parse(data);
   } catch (error) {
     console.error("Failed to load highlights:", error);
     throw new Response("Could not load highlights.", { status: 500 });

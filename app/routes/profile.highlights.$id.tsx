@@ -1,18 +1,13 @@
 import { useLoaderData, type LoaderFunctionArgs } from "react-router";
 import { api } from "~/services/api";
+import { highlightSchema, type Highlight } from "~/schemas/highlights.schema";
 import { HighlightStory } from "~/components/HighlightStory";
-
-type Highlight = {
-  id: number;
-  title: string;
-  cover_url?: string;
-};
 
 export async function loader({ params }: LoaderFunctionArgs) {
   const highlightId = params.id;
   try {
     const { data } = await api.get(`/highlights/${highlightId}`);
-    return data as Highlight;
+    return highlightSchema.parse(data);
   } catch (error) {
     console.error(error);
     throw new Response("Highlight not found", { status: 404 });
