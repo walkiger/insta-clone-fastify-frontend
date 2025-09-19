@@ -16,7 +16,7 @@ export async function loader() {
 export default function ReelsGrid() {
   const reels = useLoaderData() as Reel[];
   return (
-    <div className='grid grid-cols-2 md:grid-cols-4 gap-1'>
+    <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2'>
       {reels.map((reel) => (
         <ReelGridItem key={reel.id} reel={reel} />
       ))}
