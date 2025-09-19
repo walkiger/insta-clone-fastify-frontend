@@ -17,7 +17,7 @@ export async function loader({ params }: LoaderFunctionArgs) {
 export default function HighlightDetail() {
   const highlight = useLoaderData() as Highlight;
   return (
-    <div className='min-h-[60vh] flex items-center justify-center'>
+    <div className='min-h-[60vh] flex items-center justify-center p-4'>
       <HighlightStory highlight={highlight} />
     </div>
   );

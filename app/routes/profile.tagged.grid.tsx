@@ -16,7 +16,7 @@ export async function loader() {
 export default function TaggedGrid() {
   const posts = useLoaderData() as TaggedPost[];
   return (
-    <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
+    <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'>
       {posts.map((post) => (
         <TaggedGridItem key={post.id} post={post} />
       ))}

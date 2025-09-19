@@ -16,7 +16,7 @@ export async function loader() {
 export default function HighlightsList() {
   const highlights = useLoaderData() as Highlight[];
   return (
-    <div className='flex gap-4 overflow-x-auto py-2'>
+    <div className='flex gap-4 overflow-x-auto py-4 px-1'>
       {highlights.map((h) => (
         <HighlightBubble key={h.id} id={h.id} title={h.title} cover_url={h.cover_url} />
       ))}
